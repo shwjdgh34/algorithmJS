@@ -5,17 +5,16 @@ const solution = (progresses, speeds) => {
     return Math.ceil((100 - x) / speeds[i]);
   });
   console.log(duration);
+
+  // reduce 생각해보기
   duration.map(x => {
-    if (stack.length === 0 || stack[0] >= x) {
-      stack.push(x);
-    } else {
+    if (stack.length !== 0 && stack[0] < x) {
       answer.push(stack.length);
       stack = [];
-      stack.push(x);
     }
+    stack.push(x);
   });
   answer.push(stack.length);
-  stack = [];
   return answer;
 };
 
